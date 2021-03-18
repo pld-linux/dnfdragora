@@ -1,0 +1,12 @@
+--- dnfdragora-2.1.1/CMakeLists.txt~	2021-01-06 12:45:47.000000000 +0100
++++ dnfdragora-2.1.1/CMakeLists.txt	2021-03-18 22:59:24.617138650 +0100
+@@ -19,7 +19,9 @@
+ 	message(STATUS "Found sphinx-build: ${SPHINX_EXECUTABLE}")
+ endif(SPHINX_EXECUTABLE STREQUAL "SPHINX_EXECUTABLE-NOTFOUND")
+ 
++IF (NOT PYTHON_INSTALL_DIR)
+ execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(), end='')" OUTPUT_VARIABLE PYTHON_INSTALL_DIR)
++ENDIF()
+ string(REGEX REPLACE "\n$" "" ${PYTHON_INSTALL_DIR} "${PYTHON_INSTALL_DIR}")
+ execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "import sys; sys.stdout.write('%s.%s' % (sys.version_info.major, sys.version_info.minor))" OUTPUT_VARIABLE PYTHON_MAJOR_DOT_MINOR_VERSION)
+ message(STATUS "Python install dir is ${PYTHON_INSTALL_DIR}")
