@@ -1,7 +1,7 @@
 Summary:	DNF package-manager based on libYui abstraction
 Name:		dnfdragora
 Version:	2.1.1
-Release:	1
+Release:	2
 License:	GPL v3+
 Source0:	https://github.com/manatools/dnfdragora/archive/%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	addda76c7ff2695a6b5f6138bf6a3fe3
@@ -81,6 +81,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %py3_ocomp $RPM_BUILD_ROOT%{py3_sitescriptdir}
 %py3_comp $RPM_BUILD_ROOT%{py3_sitescriptdir}
+
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/pa_IN
 
 %find_lang %{name}
 
